@@ -12,30 +12,19 @@ class PhonebookTest(unittest.TestCase):
     def tearDown(self):
         self.phonebook.clear() 
 	    
-
+	#test looks up entry by name
     def test_lookup_entry_by_name(self):
         self.phonebook.add('Mike', '0707')
         self.assertEqual('0707', self.phonebook.lookup('Mike'))
      
-
+	 #test checks for a missing entry and raises an error
     def test_missing_entry_raises_error(self):
         self.assertRaises(KeyError, self.phonebook.lookup, 'missing')
-
+	#test checks if phonebook is consistent and has name and phone
     def test_empty_phonebook_is_consistent(self):
         self.assertTrue(self.phonebook.is_consistent())
 
-    @unittest.skip('Example')
-    def test_is_consistent(self):
-        self.assertTrue(self.phonebook.is_consistent())
-        self.phonebook.add('Mike', '0707')
-        self.assertTrue(self.phonebook.is_consistent())
-        self.phonebook.add('Jane', '0705')
-        self.assertTrue(self.phonebook.is_consistent())
-        self.phonebook.add('John', '0743')  
-        self.assertFalse(self.phonebook.is_consistent())
-        self.phonebook.add('Jake', '0721')  
-        self.assertFalse(self.phonebook.is_consistent())
-
+   
     def test_phonebook_with_normal_entries_is_consistent(self):
         self.phonebook.add('test_missing_entry_raises_error', '0707')
         self.phonebook.add('Jane', '0705')
